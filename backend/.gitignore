@@ -1,0 +1,15 @@
+#PERSONAL FILES
+text
+
+#DEPENDENCIES
+node_modules
+
+
+#REFACTOR
+config.js
+config.sample.js
+
+
+#SERVERLESS FILES
+.serverless
+
