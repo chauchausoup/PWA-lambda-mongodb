@@ -15,22 +15,19 @@ l_api.get("/", async (req, res) => {
   };
 });
 
-l_api.get("/user", async (req, res) => {
+l_api.post("/login", async (req, res) => {
+  return req.body
+});
+
+l_api.post("/register", async (req, res) => {
   return {
-    statusCode: 200,
-    body: JSON.stringify({
-      KITTY
-    }),
+    status: "registering going",
   };
 });
 
-l_api.get("/login", async (req, res) => {
-  return {
-    status: "OK",
-  };
-});
 
-l_api.get("/register", async (req, res) => {});
+
+
 
 /* 
 
