@@ -8,6 +8,7 @@ node_modules
 #REFACTOR
 config.js
 config.sample.js
+data.js
 
 
 #SERVERLESS FILES
