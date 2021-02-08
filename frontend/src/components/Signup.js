@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function SignUp() {
   const classes = useStyles();
 
   return (
@@ -51,10 +51,10 @@ export default function Login() {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <AccountCircle/>
         </Avatar>
         <Typography component="h1" variant="h5">
-          Login
+          Sign Up
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -87,10 +87,10 @@ export default function Login() {
             color="primary"
             className={classes.submit}
           >
-            Login
+            Sign Up
           </Button>
           <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {"Do have an account? Login"}
           </Link>
         </form>
       </div>
