@@ -15,11 +15,6 @@ mongoose.connect(MONGO_CONNECTION_STRING, {
 });
 
 
-/* mongoose.connect("mongodb://localhost/test", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
- */
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", ()=>{
@@ -60,6 +55,3 @@ l_api.post("/register", async (req, res) => {
 module.exports.hello = async (event, context) => {
   return await l_api.run(event, context);
 };
-
-// Use this code if you don't use the http event with the LAMBDA-PROXY integration
-// return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
