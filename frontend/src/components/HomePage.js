@@ -11,6 +11,12 @@ var styles = {
 }
 
 export default function DisableElevation() {
+
+  const logoutHandler=(e)=>{
+    e.preventDefault()
+    console.log("logout")
+  }
+
   return (
     <div>
       <h1>Welcome</h1>
@@ -20,7 +26,7 @@ export default function DisableElevation() {
           <ListSection/>
         </div>
       </div>
-      <Button variant="contained" color="primary" disableElevation>
+      <Button variant="contained" color="primary" disableElevation onClick={logoutHandler}>
         Logout
       </Button>
     </div>

@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+//import Link from '@material-ui/core/Link';
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
+//react router dom
+import {Link } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -27,16 +29,16 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -45,8 +47,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+  // objects for styling
   const classes = useStyles();
- 
+
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
+
+  /* 
+  Best Practises to secure the password are necessary in this step
+  */
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setLoginInfo({
+      ...loginInfo,
+      [name]: value,
+    });
+  };
+
+  const handleSubmission = (e) => {
+    e.preventDefault();
+    console.log(loginInfo);
+    //send to the backend or say to mongodb Atlas
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -68,6 +95,7 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -79,20 +107,22 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleInputChange}
           />
-         
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmission}
           >
             Login
           </Button>
-          <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-          </Link>
+
+          <Link to="/signup">"Dont have an account? SignUp"</Link>
+        
         </form>
       </div>
       <Box mt={8}>

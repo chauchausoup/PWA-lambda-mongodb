@@ -1,24 +1,27 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+//import Link from "@material-ui/core/Link";
+import Box from "@material-ui/core/Box";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
+//react router dom
+import {Link} from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -26,16 +29,16 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -44,14 +47,46 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+ 
   const classes = useStyles();
+
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
+  var flag =1;
+  const [replyState,setReplyState]=useState(0)
+
+  /* 
+  Best Practises to secure the password are necessary in this step
+  */
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setLoginInfo({
+      ...loginInfo,
+      [name]: value,
+    });
+  };
+
+  const handleSubmission = (e) => {
+    e.preventDefault();
+    console.log(loginInfo);
+    //send to the backend or say to mongodb Atlas
+    flag ? setReplyState(1):setReplyState(0)
+    if(replyState){
+     
+    }
+
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <AccountCircle/>
+          <AccountCircle />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign Up
@@ -67,6 +102,7 @@ export default function SignUp() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -78,20 +114,26 @@ export default function SignUp() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleInputChange}
           />
-         
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmission}
           >
             Sign Up
           </Button>
-          <Link href="#" variant="body2">
-                {"Do have an account? Login"}
-          </Link>
+
+          <Link to="/">"Do have an account? Login"</Link>
+          {/* <Switch>
+            <Route path="/">
+              <Login />
+            </Route>
+          </Switch> */}
         </form>
       </div>
       <Box mt={8}>
