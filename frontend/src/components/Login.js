@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 //react router dom
-import {Link } from "react-router-dom";
+import {Link,useHistory} from "react-router-dom";
 
 function Copyright() {
   return (
@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+  let history=useHistory()
   // objects for styling
   const classes = useStyles();
 
@@ -72,6 +73,9 @@ export default function Login() {
     e.preventDefault();
     console.log(loginInfo);
     //send to the backend or say to mongodb Atlas
+    setTimeout(()=>{
+      history.push('/home')
+    },1000)
   };
 
   return (
@@ -121,7 +125,7 @@ export default function Login() {
             Login
           </Button>
 
-          <Link to="/signup">"Dont have an account? SignUp"</Link>
+          "Dont have an account? <Link to="/signup">SignUp"</Link>
         
         </form>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 //react router dom
-import {Link} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -47,15 +47,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
- 
+  let history = useHistory();
+
   const classes = useStyles();
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
-  var flag =1;
-  const [replyState,setReplyState]=useState(0)
+
+ /*  const [hState, setHState] = useState("");
+
+  //flag for reply state
+  var flag = 1;
+
+  const [replyState, setReplyState] = useState(0); */
 
   /* 
   Best Practises to secure the password are necessary in this step
@@ -74,11 +80,26 @@ export default function SignUp() {
     e.preventDefault();
     console.log(loginInfo);
     //send to the backend or say to mongodb Atlas
-    flag ? setReplyState(1):setReplyState(0)
-    if(replyState){
-     
-    }
+    
+    setTimeout(()=>{
+      history.push('/')
+    },2000)
 
+
+
+    /* flag ? setReplyState(1) : setReplyState(0);
+    if (replyState) {
+
+      //simulate
+      setTimeout(() => {
+        const value = "/";
+        setHState({
+          ...hState,
+          [hState]: value,
+        });
+        history.push(hState);
+      }, 1000);
+    } */
   };
 
   return (
@@ -116,7 +137,6 @@ export default function SignUp() {
             autoComplete="current-password"
             onChange={handleInputChange}
           />
-
           <Button
             type="submit"
             fullWidth
@@ -127,13 +147,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-
-          <Link to="/">"Do have an account? Login"</Link>
-          {/* <Switch>
-            <Route path="/">
-              <Login />
-            </Route>
-          </Switch> */}
+          "Do have an account? <Link to="/">Login"</Link>
         </form>
       </div>
       <Box mt={8}>

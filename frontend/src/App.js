@@ -3,9 +3,10 @@ import Login from "./components/Login";
 import SignUp from "./components/Signup";
 import Homepage from "./components/HomePage";
 import FoF from './components/FoF'
-
 //react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//import PrivateRoute from './components/PrivateRoute'
+
 
 function App() {
   return (

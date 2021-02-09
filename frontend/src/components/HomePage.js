@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import ListSection from './ListSection.js'
+import { useHistory } from "react-router-dom";
 
 var styles = {
   root: {
@@ -11,10 +12,15 @@ var styles = {
 }
 
 export default function DisableElevation() {
+  let history=useHistory()
 
   const logoutHandler=(e)=>{
     e.preventDefault()
     console.log("logout")
+    //logout history patchup
+    setTimeout(()=>{
+      history.push('/')
+    },2000)
   }
 
   return (
