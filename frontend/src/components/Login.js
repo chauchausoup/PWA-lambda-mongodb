@@ -13,6 +13,11 @@ import Container from "@material-ui/core/Container";
 //react router dom
 import {Link,useHistory} from "react-router-dom";
 
+
+//lets axios it
+import axios from 'axios'
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -73,7 +78,14 @@ export default function Login() {
     e.preventDefault();
     console.log(loginInfo);
     //send to the backend or say to mongodb Atlas
+
+    
     setTimeout(()=>{
+
+      //axios must send loginInfo to mongo and get a reply 
+      //is the reply is status OK then use the route pushing 
+      //other wise do nothing
+      
       history.push('/home')
     },1000)
   };
