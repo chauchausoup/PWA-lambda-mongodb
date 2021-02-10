@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 const { MONGO_CONNECTION_STRING } = require("./config");
 
 
+//lets insert user models
+const UserModel = require("./models/User");
+
+
 //mongodb connection
 mongoose.connect(MONGO_CONNECTION_STRING, {
   useNewUrlParser: true,
@@ -15,14 +19,12 @@ mongoose.connect(MONGO_CONNECTION_STRING, {
 });
 
 
-const db = mongoose.connection;
+/* const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", ()=>{
   console.log("Success !")
-});
+}); */
 
-//lets insert user models
-const UserModel = require("./models/User");
 
 l_api.get("/", async (req, res) => {
   return {
