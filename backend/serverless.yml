@@ -22,4 +22,5 @@ functions:
       - http:
           path: /register
           method: post
-    
+
+          

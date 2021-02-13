@@ -15,7 +15,7 @@ const UserModel = require("./models/User");
 //mongodb connection
 mongoose.connect(MONGO_CONNECTION_STRING, {
   useNewUrlParser: true,
-  useUnifiedTopology:true
+  useUnifiedTopology:false
 });
 
 
